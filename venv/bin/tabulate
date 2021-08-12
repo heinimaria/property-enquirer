@@ -1,4 +1,4 @@
-#!/Users/heini.partanen/PycharmProjects/property-enquirer/venv/bin/python
+#!/Users/heinipartanen/Documents/property-enquirer/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

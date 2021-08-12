@@ -2,12 +2,13 @@ from tabulate import tabulate
 import pandas as pd
 from pandas import DataFrame
 import re
+import json
 
 """ This class parses the api response, prints it on a boarrd and logs the data to files"""
 
 
 class ListingParser:
-    def __init__(self, response, area):
+    def __init__(self, response: json, area: str):
         self.response = response
         self.area = area
 
@@ -46,11 +47,11 @@ class ListingParser:
         return new_df
 
     """ Display the API response on a board """
-    def property_listings_board(self) -> DataFrame:
-        return tabulate(self.property_listings(), headers='keys', tablefmt='psql')
+    def property_listings_board(self) -> None:
+        print(tabulate(self.property_listings(), headers='keys', tablefmt='psql'))
 
     @staticmethod
-    def clean_listings(old_df) -> DataFrame:
+    def clean_listings(old_df: DataFrame) -> DataFrame:
         match = re.compile('<.*?>')
         old_df["short_description"] = old_df.short_description.str.replace(match, '')
         return old_df
